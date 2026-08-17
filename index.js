@@ -6,7 +6,15 @@ const destinationRoutes = require('./src/routes/destinations');
 const { errorHandler } = require('./src/middleware/errorHandler');
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: ['https://travel-guide-frontend-three.vercel.app', 'http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
